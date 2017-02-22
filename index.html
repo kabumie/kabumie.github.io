@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    kabumie 的博客
+  
+</title>
+
+<meta name="description" content="web前端开发 ACG">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kabumie 的博客">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="kabumie 的博客">
+<meta property="og:description" content="web前端开发 ACG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kabumie 的博客">
+<meta name="twitter:description" content="web前端开发 ACG">
+
+
+
+
+  <link rel="icon" href="https://raw.githubusercontent.com/kabumie/kabumie.github.io/master/timg.jpg">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">kabumie 的博客</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/">kabumie 的博客</a></h1>
+    
+      <p class="subtitle">
+        其实这里是要写点诗词名言什么的
+      </p>
+    
+    <div class="info">
+      <div class="content">
+        
+          <div class="description">web前端开发 ACG</div>
+        
+        
+          <div class="author">kabumie</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://avatars1.githubusercontent.com/u/25236999?v=3&amp;s=460"></a>
+          
+        </div>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">2017</a><span class="archive-list-count">1</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/" title="主页">主页</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/archives" title="年代记">年代记</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/about" title="关于">关于</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/kabumie" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2017/02/18/关于JavaScript中的事件代理/" >
+  关于JavaScript中的事件代理
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2017/02/18/关于JavaScript中的事件代理/"><span class="article-date">
+  2017-02-18
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/技术/">技术</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h2 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><ul>
+<li>JavaScript高级程序设计 <em>(简称JS高程)</em> ：事件代理 <em>(事件委托)</em> 利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。</li>
+</ul>
+<h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><ol>
+<li><p>减少与dom的交互次数，提高代码性能。 <em>(–代码性能–)</em></p>
+<ul>
+<li>在JavaScript中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间，这就是为什么性能优化的主要思想之一就是要减少DOM操作；如果使用事件代理，就会将所有的操作放到js程序里面，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能。</li>
+<li>JS高程上关于代码优化中提到了：如果可能，在文档级别附加事件处理程序，这样可以处理整个页面的事件。</li>
+</ul>
+</li>
+<li><p>动态生成DOM元素时，可通过事件代理给新增的节元素添加事件函数。</p>
+<ul>
+<li>比如在异步获取后台数据加载页面时，直接给动态生成的DOM元素绑定事件函数可能需要在ajax交互时加入事件函数，这样往往会使得代码变得混乱，而使用事件代理则会非常方便。</li>
+</ul>
+</li>
+</ol>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><ul>
+<li>事件冒泡：事件开始时由嵌套层次最深的节点开始接收，然后逐级向其父级节点传播。<ul>
+<li>例：页面中有 div&gt;ul&gt;li&gt;p 的结构，当你 click 了 p 元素，click 事件首先在 p 元素上发生，然后，click 事件沿DOM树向上传播，分别在 li&gt;ul&gt;div 上发生，按照JS高程上的说明，最终会传播到 document 对象。</li>
+<li>注：与事件冒泡对应的还有事件捕获。</li>
+</ul>
+</li>
+<li>事件代理：利用事件冒泡原理，把事件函数绑定在父级元素上，再指定需要执行函数的子元素执行事件函数；在触发事件时，事件会依次冒泡到父级元素，从而触发绑定在父级元素的事件函数。<ul>
+<li>对于事件代理原理的理解，阅读下面关于事件对象和具体用法的介绍后会更加清晰。</li>
+</ul>
+</li>
+</ul>
+<h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><p>1.原生JS</p>
+<ul>
+<li><p>事件对象：在触发DOM上的某个事件时，会产生一个事件对象 event，这个对象中包含着所有与事件有关的信息，在执行事件处理程序时 event 对象会被传入；只有在事件处理程序执行期间，event 对象才会存在；一旦事件处理程序执行完成，event 对象就会被销毁  <em>(这里本人并不能100%确定JS高程中所说的 事件处理程序 完全等价于我们所写的 事件函数)</em> ；对于事件代理，这里重点介绍下 event 的几个属性。</p>
+<ul>
+<li>currentTarget ：其事件函数当前正在处理事件的那个元素；如果感觉这个权威定义有点拗口，你可以暂且把 currentTarget 简单的理解为原生JS中事件函数内部的 this 。</li>
+<li>target ：事件目标；即触发事件的实际目标。</li>
+<li>这里用一个例子说明：假设页面中有 ul&gt;li&gt;p 的结构，然后点击 p 标签来执行下面代码<em>(这里为方便阅读没有做兼容性处理，此代码需要在chrome浏览器下运行)</em><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"></div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.currentTarget);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.target);	<span class="comment">// &lt;p&gt;...&lt;/p&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>具体用法：给父元素绑定事件函数，然后通过条件判断找到需要执行事件函数的元素。</p>
+</li>
+</ul>
+<p>页面结构如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;&lt;p id=<span class="string">"aaa"</span>&gt;AAA&lt;/p&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;p id=<span class="string">"bbb"</span>&gt;BBB&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>JS代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"></div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">	<span class="comment">// 兼容性处理</span></div><div class="line">	<span class="keyword">var</span> e = e || <span class="built_in">window</span>.event;</div><div class="line">	<span class="keyword">var</span> target = e.target || e.srcElement;</div><div class="line"></div><div class="line">	<span class="keyword">switch</span> (target.id)&#123;</div><div class="line">		<span class="keyword">case</span> <span class="string">"aaa"</span>:</div><div class="line">			alert(<span class="string">"AAA"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"bbb"</span>:</div><div class="line">			alert(<span class="string">"BBB"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span> :</div><div class="line">			alert(<span class="string">"未点击 p 标签"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.jQuery</p>
+<ul>
+<li>jQuery 的 on 方法中已经封装好了事件代理的功能，而且事件函数内部的 this 直接指定的就是被指定的元素。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// on 的3个参数 1.事件类型 2.给事件指定的元素 3.事件函数</span></div><div class="line">    $(<span class="string">"div"</span>).on(<span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"p"</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// p</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li>在原生JS中<ul>
+<li>适合用事件委托的事件：click，mousedown，mouseup，keydown，keyup，keypress ；而mouseover和mouseout虽然也有事件冒泡，但是处理它们的时候需要特别的注意，因为需要经常计算它们的位置，处理起来不太容易。</li>
+<li>不适合的就有很多了，举个例子，mousemove，每次都要计算它的位置，非常不好把控，在不如说focus，blur之类的，本身就没用冒泡的特性，自然就不能用事件委托了。</li>
+</ul>
+</li>
+<li>而 jQuery 的 on 方法则封装得简单直接，但是这里并非单纯推荐使用第三方库，实际应用中要根据具体需求做选择。</li>
+</ul>
+<p>本文参考了《JavaScript高级程序设计》和 <em>凌云之翼</em> 的博客，《JavaScript高级程序设计》真的是一本很好的教材 :)</p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 kabumie 的博客 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>
