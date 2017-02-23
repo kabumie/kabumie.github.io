@@ -204,7 +204,7 @@
 <li>JS高程上关于代码优化中提到了：如果可能，在文档级别附加事件处理程序，这样可以处理整个页面的事件。</li>
 </ul>
 </li>
-<li><p>动态生成DOM元素时，可通过事件代理给新增的节元素添加事件函数。</p>
+<li><p>动态生成DOM元素时，可通过事件代理给新增的元素添加事件函数。</p>
 <ul>
 <li>比如在异步获取后台数据加载页面时，直接给动态生成的DOM元素绑定事件函数可能需要在ajax交互时加入事件函数，这样往往会使得代码变得混乱，而使用事件代理则会非常方便。</li>
 </ul>
@@ -223,11 +223,15 @@
 </ul>
 <h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><p>1.原生JS</p>
 <ul>
-<li><p>事件对象：在触发DOM上的某个事件时，会产生一个事件对象 event，这个对象中包含着所有与事件有关的信息，在执行事件处理程序时 event 对象会被传入；只有在事件处理程序执行期间，event 对象才会存在；一旦事件处理程序执行完成，event 对象就会被销毁  <em>(这里本人并不能100%确定JS高程中所说的 事件处理程序 完全等价于我们所写的 事件函数)</em> ；对于事件代理，这里重点介绍下 event 的几个属性。</p>
+<li><p>事件对象：在触发DOM上的某个事件时，会产生一个事件对象 event，这个对象中包含着所有与事件有关的信息，在执行事件处理程序时 event 对象会被传入；只有在事件处理程序执行期间，event 对象才会存在；一旦事件处理程序执行完成，event 对象就会被销毁；对于事件代理，这里重点介绍下 event 的几个属性。</p>
 <ul>
-<li>currentTarget ：其事件函数当前正在处理事件的那个元素；如果感觉这个权威定义有点拗口，你可以暂且把 currentTarget 简单的理解为原生JS中事件函数内部的 this 。</li>
+<li>currentTarget ：其事件函数当前正在处理事件的那个元素；如果感觉这个定义有点拗口，你可以暂且把 currentTarget 简单的理解为原生JS中事件函数内部的 this 。</li>
 <li>target ：事件目标；即触发事件的实际目标。</li>
-<li>这里用一个例子说明：假设页面中有 ul&gt;li&gt;p 的结构，然后点击 p 标签来执行下面代码<em>(这里为方便阅读没有做兼容性处理，此代码需要在chrome浏览器下运行)</em><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"></div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.currentTarget);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.target);	<span class="comment">// &lt;p&gt;...&lt;/p&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>这里用一个例子说明：假设页面中有 ul&gt;li&gt;p 的结构，然后点击 p 标签来执行下面代码<em>(这里为方便阅读没有做兼容性处理，此代码需要在chrome浏览器下运行)</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"></div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.currentTarget);	<span class="comment">// &lt;ul&gt;...&lt;/ul&gt;</span></div><div class="line">	<span class="built_in">console</span>.log(event.target);	<span class="comment">// &lt;p&gt;...&lt;/p&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从运行结果可以看到，当把事件函数绑定在父元素时，currentTarget 属性和函数内部的 this 都为绑定事件函数的父元素，而 target 属性的值则是我们想要触发事件的子元素。</p>
+</blockquote>
 </li>
 </ul>
 </li>
@@ -236,13 +240,19 @@
 </ul>
 <p>页面结构如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;&lt;p id=<span class="string">"aaa"</span>&gt;AAA&lt;/p&gt;&lt;/li&gt;</div><div class="line">	&lt;li&gt;&lt;p id=<span class="string">"bbb"</span>&gt;BBB&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
 <p>JS代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="built_in">document</span>.querySelector(<span class="string">'li'</span>);</div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>);</div><div class="line"></div><div class="line">ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">	<span class="comment">// 兼容性处理</span></div><div class="line">	<span class="keyword">var</span> e = e || <span class="built_in">window</span>.event;</div><div class="line">	<span class="keyword">var</span> target = e.target || e.srcElement;</div><div class="line"></div><div class="line">	<span class="keyword">switch</span> (target.id)&#123;</div><div class="line">		<span class="keyword">case</span> <span class="string">"aaa"</span>:</div><div class="line">			alert(<span class="string">"AAA"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"bbb"</span>:</div><div class="line">			alert(<span class="string">"BBB"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span> :</div><div class="line">			alert(<span class="string">"未点击 p 标签"</span>);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>从测试结果可以看到，只在父元素上绑定一次事件函数，通过条件判断可以分别找到父元素下触发事件的子元素，然后分别进行操作。</p>
+</blockquote>
 <p>2.jQuery</p>
 <ul>
-<li>jQuery 的 on 方法中已经封装好了事件代理的功能，而且事件函数内部的 this 直接指定的就是被指定的元素。</li>
+<li>jQuery 的 on 方法中已经封装好了事件代理的功能，而且事件函数内部的 this 直接指向的就是被指定的元素。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// on 的3个参数 1.事件类型 2.给事件指定的元素 3.事件函数</span></div><div class="line">    $(<span class="string">"div"</span>).on(<span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"p"</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// p</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意 jQuery 的 on 方法中 this 直接指向的就是触发事件的子元素 p 。</p>
+</blockquote>
 <h3 id="结尾："><a href="#结尾：" class="headerlink" title="结尾："></a>结尾：</h3><ul>
-<li>jQuery 的 on 方法则封装得简单直接，但是这里并非单纯推荐使用第三方库，实际应用中要根据具体需求做选择。</li>
+<li>原生JS中的一些事件如 onmouseover 存在一些不好用的问题，同时通过 target 等属性进行筛选又需要写不少条件判断的代码，相比下jQuery 的 on 方法则封装得简单直接，但是这里并非单纯推荐使用第三方库，实际应用中要根据具体需求做选择。</li>
 </ul>
 <p>本文参考了《JavaScript高级程序设计》和 <em>凌云之翼</em> 的博客，《JavaScript高级程序设计》真的是一本很好的教材 :)</p>
 
