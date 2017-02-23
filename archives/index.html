@@ -114,7 +114,7 @@
           
             
               <li>
-                <a href="/archives" title="年代记">年代记</a>
+                <a href="/archives" title="年历">年历</a>
               </li>
             
           
@@ -235,13 +235,8 @@
 <li>jQuery 的 on 方法中已经封装好了事件代理的功能，而且事件函数内部的 this 直接指定的就是被指定的元素。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// on 的3个参数 1.事件类型 2.给事件指定的元素 3.事件函数</span></div><div class="line">    $(<span class="string">"div"</span>).on(<span class="string">"click"</span>, <span class="string">"p"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"p"</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);	<span class="comment">// p</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
-<li>在原生JS中<ul>
-<li>适合用事件委托的事件：click，mousedown，mouseup，keydown，keyup，keypress ；而mouseover和mouseout虽然也有事件冒泡，但是处理它们的时候需要特别的注意，因为需要经常计算它们的位置，处理起来不太容易。</li>
-<li>不适合的就有很多了，举个例子，mousemove，每次都要计算它的位置，非常不好把控，在不如说focus，blur之类的，本身就没用冒泡的特性，自然就不能用事件委托了。</li>
-</ul>
-</li>
-<li>而 jQuery 的 on 方法则封装得简单直接，但是这里并非单纯推荐使用第三方库，实际应用中要根据具体需求做选择。</li>
+<h3 id="结尾："><a href="#结尾：" class="headerlink" title="结尾："></a>结尾：</h3><ul>
+<li>jQuery 的 on 方法则封装得简单直接，但是这里并非单纯推荐使用第三方库，实际应用中要根据具体需求做选择。</li>
 </ul>
 <p>本文参考了《JavaScript高级程序设计》和 <em>凌云之翼</em> 的博客，《JavaScript高级程序设计》真的是一本很好的教材 :)</p>
 
