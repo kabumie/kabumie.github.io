@@ -205,14 +205,14 @@
 <li>2009年 W3C 提出Flex布局，主流浏览器均可支持，其中IE浏览器在IE10之后开始支持</li>
 </ul>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="Flex容器"><a href="#Flex容器" class="headerlink" title="Flex容器"></a>Flex容器</h4><ul>
-<li>采用Flex布局的元素，称为Flex容器(flex container)，简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目(flex item)，简称”项目”</li>
+<li>采用Flex布局的元素，称为Flex容器(flex container)。它的所有子元素自动成为容器成员，称为Flex项目(flex item)</li>
 <li>给元素添加 display: flex 属性使元素成为Flex容器，即开启了弹性布局，行内元素也可用 display: inline-flex; 成为Flex容器</li>
 <li>开启弹性布局后Flex容器的子元素的 float clear vertical-align 属性将失效</li>
 </ul>
 <h4 id="主轴和副轴"><a href="#主轴和副轴" class="headerlink" title="主轴和副轴"></a>主轴和副轴</h4><ul>
 <li>在Flex容器内使用主轴和副轴概念；默认x轴为主轴，y轴为副轴；可由Flex容器的 flex-direction 属性修改</li>
 <li>主轴副轴中有起始位置的概念，默认的起始位置为x轴的左侧y轴的上侧</li>
-<li>在使用弹性布局时，需要通过主轴和副轴确定编辑的方向，Flex容器内的元素默认会处于类似 float 的状态处于容器中，例html结构如下：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>在使用弹性布局时，需要通过主轴和副轴确定编辑的方向，Flex容器内的元素默认会处于类似 float 的状态处于容器中，例html结构如下：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pink"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"green"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
