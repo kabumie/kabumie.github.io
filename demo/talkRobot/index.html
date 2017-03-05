@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+
+    .link {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    .container {
+        width: 60%;
+        height: 100%;
+        margin: 0 auto;
+        border: 2px solid gray;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .content {
+        width: 100%;
+        border: 1px solid gray;
+        overflow: auto;
+        flex: 8;
+    }
+    
+    .put {
+        width: 100%;
+        border: 1px solid gray;
+        flex: 2;
+        display: flex;
+    }
+    
+    .put input:nth-child(1) {
+        padding-left: 5px;
+        flex: 7;
+    }
+    
+    .put input:nth-child(2) {
+        flex: 3;
+        background-color: lightblue;
+        font: 400 25px '微软雅黑';
+        letter-spacing: 20px;
+        text-indent: 20px;
+    }
+    
+    .send {
+        width: 100%;
+        padding: 3px;
+        border: 1px solid deeppink;
+        box-sizing: border-box;
+        font: 400 14px '微软雅黑';
+        text-align: left;
+    }
+    
+    .get {
+        width: 100%;
+        padding: 3px;
+        border: 1px solid olive;
+        box-sizing: border-box;
+        font: 400 14px '微软雅黑';
+        text-align: right;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="link">
+        <a href="https://kabumie.github.io/">返回主页</a>
+        <a href="../">返回demo列表</a>
+    </div>
+    <div class="container">
+        <div class="content"></div>
+        <div class="put">
+            <input type="text">
+            <input type="button" value="发送">
+        </div>
+    </div>
+    <script>
+    const sendBtn = document.querySelector('input[type="button"]');
+    const sendText = document.querySelector('input[type="text"]');
+    const content = document.querySelector('.content');
+    sendBtn.onclick = () => {
+        let sendData = sendText.value.trim();
+        // 清空输入框内容
+        sendText.value = "";
+        if (sendData !== '') {
+            // 在收到回答数据前禁用按钮点击
+            sendBtn.setAttribute('disabled', 'disabled');
+            // 在显示区域生成显示问题的div
+            let sendDiv = document.createElement('div');
+            sendDiv.setAttribute('class', 'send');
+            sendDiv.innerText = sendData;
+            content.appendChild(sendDiv);
+            // 使滚动条始终保持在最底部
+            content.scrollTop = content.scrollHeight;
+            // 把用户输入问题内容拼接成提交格式
+            sendData = 'key=59cc20c91d7244d7b8d066c9e4f7d06e&info=' + sendData; // 这个key可以在官网免费申请
+            const ajax = new XMLHttpRequest();
+            ajax.open('post', 'http://www.tuling123.com/openapi/api', true);
+            ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            ajax.send(sendData);
+            ajax.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseText = this.responseText;
+                    getData = JSON.parse(responseText).text;
+                    // 在显示区域生成显示回答的div
+                    let getDiv = document.createElement('div');
+                    getDiv.setAttribute('class', 'get');
+                    getDiv.innerText = getData;
+                    content.appendChild(getDiv);
+                    // 使滚动条始终保持在最底部
+                    content.scrollTop = content.scrollHeight;
+                    // 收到回答数据后恢复按钮点击
+                    sendBtn.removeAttribute('disabled');
+                }
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
